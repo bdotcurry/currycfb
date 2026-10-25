@@ -160,7 +160,7 @@
     leader('rating',true,'rating');
     leader('tcs',true,'tcs');
     leader('sor',true,'sor');
-    leader('d_adj_epa_play',false,'defense');
+    leader('sos',true,'sos');
     const isoDate = String(data.updated).slice(0,10);
     const parsed = new Date(isoDate+'T12:00:00');
     const formatted = Number.isNaN(parsed.getTime()) ? isoDate : parsed.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
@@ -170,7 +170,7 @@
     document.getElementById('header-season').textContent=data.season+' SEASON';
     document.getElementById('header-updated').textContent='UPDATED '+shortDate.toUpperCase();
     document.getElementById('footer-data').textContent=data.season+' SEASON · WEEK '+data.week;
-    document.title=`CFB Ratings | ${data.season} Week ${data.week}`;
+    document.title=`Curry CFB | ${data.season} Week ${data.week}`;
     document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
       state.view=btn.dataset.view;
       state.sortKey=VIEWS[state.view].sort;
@@ -195,16 +195,6 @@
       if (e.key==='Escape' && document.activeElement===searchInput) {
         searchInput.value='';state.filter='';searchInput.blur();render();
       }
-    });
-    document.getElementById('export-csv').addEventListener('click',()=>{
-      const keys=currentKeys();
-      const esc=x=>'"'+String(x??'').replaceAll('"','""')+'"';
-      const head=keys.map(k=>FIELDS[k].full);
-      const lines=[head,...currentRows().map(t=>keys.map(k=>t[k]))];
-      const csv='\ufeff'+lines.map(row=>row.map(esc).join(',')).join('\r\n')+'\r\n';
-      const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
-      const a=document.createElement('a'); a.href=url; a.download=`CFB_${data.season}_Week${data.week}_${state.view}.csv`;
-      document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
     });
     render();
   }

@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#132840" />
+  <meta name="theme-color" content="#080808" />
   <meta name="description" content="Independent college football analytics. Sort 138 FBS teams by predictive Rating, TCS, SOR, SOS, and offensive and defensive team metrics." />
-  <title>CFB Ratings — 2026 College Football Analytics</title>
+  <title>Curry CFB | 2026 College Football Analytics + Ratings</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
   <script src="data.js" defer></script>
@@ -14,9 +14,21 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="./" aria-label="CFB Ratings Home">
-        <span class="brandmark" aria-hidden="true"><span>CFB</span><i></i></span>
-        <span class="brand-name"><strong>CFB RATINGS</strong><small>COLLEGE FOOTBALL ANALYTICS</small></span>
+      <a class="brand" href="./" aria-label="Curry CFB Home">
+        <svg class="brand-football" viewBox="0 0 96 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Masked-out lace strokes are genuinely transparent, revealing the black header. -->
+            <mask id="football-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="96" height="64">
+              <rect width="96" height="64" fill="white"/>
+              <g fill="none" stroke="black" stroke-linecap="round">
+                <path d="M34 32H62" stroke-width="4.4"/>
+                <path d="M38 25V39M45 24V40M52 24V40M59 25V39" stroke-width="3.4"/>
+              </g>
+            </mask>
+          </defs>
+          <path d="M4 32C17 14 33 5 48 5S79 14 92 32C79 50 63 59 48 59S17 50 4 32Z" fill="currentColor" mask="url(#football-cutout)"/>
+        </svg>
+        <span class="brand-name"><strong>CURRY CFB</strong><small>COLLEGE FOOTBALL ANALYTICS + RATINGS</small></span>
       </a>
       <div class="header-meta"><span class="header-season" id="header-season">2026 SEASON</span><span class="header-divider"></span><span class="header-updated" id="header-updated">WEEKLY RATINGS</span></div>
     </div>
@@ -26,9 +38,8 @@
   <main class="main-shell">
     <div class="page-intro">
       <div class="intro-copy">
-        <div class="eyebrow"><span class="eyebrow-line"></span> THE NUMBERS BEHIND THE GAME</div>
         <h1>2026 Team Rankings<span class="h1-period">.</span></h1>
-        <p>One table. Every FBS team. Proprietary contender and résumé scores alongside performance-based offensive and defensive statistics.</p>
+        <p>Proprietary contender and résumé scores alongside performance-based offensive and defensive statistics.</p>
       </div>
       <div class="data-stamp" aria-live="polite"><div class="data-stamp-top"><span class="status-pulse"></span> LATEST DATASET</div><strong id="week-label">Through Week 8</strong><span id="date-label">Updated October 25, 2026</span></div>
     </div>
@@ -47,8 +58,8 @@
         <div class="leader-sub">Strength of Record</div>
       </article>
       <article class="leader-tile">
-        <div class="leader-heading">TOP RATED DEFENSE</div><div class="leader-row"><span class="leader-team" id="leader-defense-team">—</span><strong class="leader-value" id="leader-defense-val">—</strong></div>
-        <div class="leader-sub">Lowest adjusted EPA allowed / play</div>
+        <div class="leader-heading">SOS LEADER</div><div class="leader-row"><span class="leader-team" id="leader-sos-team">—</span><strong class="leader-value" id="leader-sos-val">—</strong></div>
+        <div class="leader-sub">Strength of Schedule</div>
       </article>
     </section>
 
@@ -71,10 +82,6 @@
               <input id="team-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search a team..." />
               <kbd class="search-shortcut">/</kbd>
             </label>
-            <button class="export-button" id="export-csv" type="button" title="Export displayed rows and columns as CSV">
-              <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>
-              <span>EXPORT CSV</span>
-            </button>
           </div>
         </div>
         <div class="panel-hint"><span><span class="hint-dot"></span> Click any column heading to sort the table. Click again to reverse.</span><span id="view-description">Overall team rankings by predictive rating.</span></div>
@@ -89,14 +96,14 @@
       <div class="section-kicker">UNDERSTAND THE MODEL</div>
       <h2 id="definitions-title">What the numbers mean</h2>
       <div class="definition-grid">
-        <div class="definition"><span class="definition-id">01 / RATING</span><h3>Predictive Rating</h3><p>Your composite power rating expressed on a point-spread scale. Higher indicates a stronger team. A 5-point difference suggests a roughly five-point neutral-site edge, based on the model.</p></div>
-        <div class="definition"><span class="definition-id">02 / TCS</span><h3>Title Contender Score</h3><p>Your composite measure of how closely a team matches the statistical profile of successful College Football Playoff-era teams.</p></div>
-        <div class="definition"><span class="definition-id">03 / SOR</span><h3>Strength of Record</h3><p>Your schedule-adjusted measure of what a team has accomplished in games already played.</p></div>
-        <div class="definition"><span class="definition-id">04 / SOS</span><h3>Strength of Schedule</h3><p>Your schedule-strength measure covering the full regular-season schedule, including remaining opponents.</p></div>
+        <div class="definition"><span class="definition-id">01 / RATING</span><h3>Predictive Rating</h3><p>Composite power rating expressed on a point-spread scale. Higher indicates a stronger team. A 5-point difference suggests a roughly five-point neutral-site edge, based on the model.</p></div>
+        <div class="definition"><span class="definition-id">02 / TCS</span><h3>Title Contender Score</h3><p>Composite measure of how closely a team matches the statistical profile of successful College Football Playoff-era teams. No team with a score &lt;96.0 has won the National Title.</p></div>
+        <div class="definition"><span class="definition-id">03 / SOR</span><h3>Strength of Record</h3><p>Schedule-strength measure covering the opponents a team has played to date.</p></div>
+        <div class="definition"><span class="definition-id">04 / SOS</span><h3>Strength of Schedule</h3><p>Schedule-strength measure covering the full regular-season schedule, including remaining opponents.</p></div>
       </div>
-      <p class="definition-footnote">Game performance metrics are sourced from <a href="https://gameonpaper.com/" rel="noopener noreferrer" target="_blank">GameOnPaper</a>. Custom scores and ratings come from your Excel model. “O” denotes offense, “D” denotes defense. Lower defensive EPA and success-rate figures generally reflect better defense; higher defensive havoc indicates more disruptive plays. Customize these explanations to match your final published methodology.</p>
+      <p class="definition-footnote">Game performance metrics are sourced from <a href="https://gameonpaper.com/" rel="noopener noreferrer" target="_blank">GameOnPaper</a>.</p>
     </section>
   </main>
-  <footer class="site-footer"><div class="footer-inner"><span>CFB <strong>RATINGS</strong> <span class="footer-sep">/</span> INDEPENDENT COLLEGE FOOTBALL ANALYTICS</span><span id="footer-data">2026 SEASON · WEEK 8</span></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><span>CURRY <strong>CFB</strong> <span class="footer-sep">/</span> COLLEGE FOOTBALL ANALYTICS + RATINGS</span><span id="footer-data">2026 SEASON · WEEK 8</span></div></footer>
 </body>
 </html>

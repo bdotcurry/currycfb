@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="13" fill="#080808"/>
+  <defs>
+    <mask id="football-laces" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+      <rect width="64" height="64" fill="white"/>
+      <g fill="none" stroke="black" stroke-linecap="round">
+        <path d="M24 32H40" stroke-width="3.2"/>
+        <path d="M27 27V37M30.5 26V38M34 26V38M37.5 27V37" stroke-width="2.4"/>
+      </g>
+    </mask>
+  </defs>
+  <path d="M7 32C17 18 26 12 32 12S47 18 57 32C47 46 38 52 32 52S17 46 7 32Z" fill="#e0aa46" mask="url(#football-laces)"/>
+</svg>
