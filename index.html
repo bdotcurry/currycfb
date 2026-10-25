@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#132840" />
+  <meta name="description" content="Independent college football analytics. Sort 138 FBS teams by predictive Rating, TCS, SOR, SOS, and offensive and defensive team metrics." />
+  <title>CFB Ratings — 2026 College Football Analytics</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./" aria-label="CFB Ratings Home">
+        <span class="brandmark" aria-hidden="true"><span>CFB</span><i></i></span>
+        <span class="brand-name"><strong>CFB RATINGS</strong><small>COLLEGE FOOTBALL ANALYTICS</small></span>
+      </a>
+      <div class="header-meta"><span class="header-season" id="header-season">2026 SEASON</span><span class="header-divider"></span><span class="header-updated" id="header-updated">WEEKLY RATINGS</span></div>
+    </div>
+  </header>
+
+  <div class="top-accent" aria-hidden="true"></div>
+  <main class="main-shell">
+    <div class="page-intro">
+      <div class="intro-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> THE NUMBERS BEHIND THE GAME</div>
+        <h1>2026 Team Rankings<span class="h1-period">.</span></h1>
+        <p>One table. Every FBS team. Proprietary contender and résumé scores alongside performance-based offensive and defensive statistics.</p>
+      </div>
+      <div class="data-stamp" aria-live="polite"><div class="data-stamp-top"><span class="status-pulse"></span> LATEST DATASET</div><strong id="week-label">Through Week 8</strong><span id="date-label">Updated October 25, 2026</span></div>
+    </div>
+
+    <section class="leaders-section" aria-label="Category leaders">
+      <article class="leader-tile">
+        <div class="leader-heading">HIGHEST RATED</div><div class="leader-row"><span class="leader-team" id="leader-rating-team">—</span><strong class="leader-value" id="leader-rating-val">—</strong></div>
+        <div class="leader-sub">Neutral-field predictive rating</div>
+      </article>
+      <article class="leader-tile">
+        <div class="leader-heading">TCS LEADER</div><div class="leader-row"><span class="leader-team" id="leader-tcs-team">—</span><strong class="leader-value" id="leader-tcs-val">—</strong></div>
+        <div class="leader-sub">Title Contender Score</div>
+      </article>
+      <article class="leader-tile">
+        <div class="leader-heading">SOR LEADER</div><div class="leader-row"><span class="leader-team" id="leader-sor-team">—</span><strong class="leader-value" id="leader-sor-val">—</strong></div>
+        <div class="leader-sub">Strength of Record</div>
+      </article>
+      <article class="leader-tile">
+        <div class="leader-heading">TOP RATED DEFENSE</div><div class="leader-row"><span class="leader-team" id="leader-defense-team">—</span><strong class="leader-value" id="leader-defense-val">—</strong></div>
+        <div class="leader-sub">Lowest adjusted EPA allowed / play</div>
+      </article>
+    </section>
+
+    <section class="ranking-section" aria-labelledby="table-title">
+      <div class="ranking-heading">
+        <div><div class="section-kicker">TEAM DATA</div><h2 id="table-title">The Rankings</h2></div>
+        <div class="ranking-count"><strong id="team-counter">138</strong> <span>TEAMS</span><span class="counter-dot">·</span><strong>26</strong> <span>METRICS</span></div>
+      </div>
+      <div class="rankings-panel">
+        <div class="table-toolbar">
+          <div class="tabs" role="tablist" aria-label="Metric category">
+            <button class="tab active" type="button" role="tab" aria-selected="true" data-view="overall" id="tab-overall">OVERALL</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-view="offense" id="tab-offense">OFFENSE</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-view="defense" id="tab-defense">DEFENSE</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-view="full" id="tab-full">ALL METRICS</button>
+          </div>
+          <div class="toolbar-actions">
+            <label class="search-wrapper" for="team-search">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg>
+              <input id="team-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search a team..." />
+              <kbd class="search-shortcut">/</kbd>
+            </label>
+            <button class="export-button" id="export-csv" type="button" title="Export displayed rows and columns as CSV">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>
+              <span>EXPORT CSV</span>
+            </button>
+          </div>
+        </div>
+        <div class="panel-hint"><span><span class="hint-dot"></span> Click any column heading to sort the table. Click again to reverse.</span><span id="view-description">Overall team rankings by predictive rating.</span></div>
+        <div class="table-scroller" id="table-scroller" tabindex="0" aria-label="Scrollable sortable team rankings table">
+          <table id="ratings-table"><caption class="sr-only">2026 college football predictive ratings and team statistics</caption><thead id="ratings-thead"></thead><tbody id="ratings-tbody"></tbody></table>
+        </div>
+        <div class="table-bottom"><div id="showing-count" role="status" aria-live="polite">Showing all 138 teams</div><div class="mobile-scroll-tip">SCROLL HORIZONTALLY TO SEE MORE <span aria-hidden="true">→</span></div></div>
+      </div>
+    </section>
+
+    <section class="definitions" aria-labelledby="definitions-title">
+      <div class="section-kicker">UNDERSTAND THE MODEL</div>
+      <h2 id="definitions-title">What the numbers mean</h2>
+      <div class="definition-grid">
+        <div class="definition"><span class="definition-id">01 / RATING</span><h3>Predictive Rating</h3><p>Your composite power rating expressed on a point-spread scale. Higher indicates a stronger team. A 5-point difference suggests a roughly five-point neutral-site edge, based on the model.</p></div>
+        <div class="definition"><span class="definition-id">02 / TCS</span><h3>Title Contender Score</h3><p>Your composite measure of how closely a team matches the statistical profile of successful College Football Playoff-era teams.</p></div>
+        <div class="definition"><span class="definition-id">03 / SOR</span><h3>Strength of Record</h3><p>Your schedule-adjusted measure of what a team has accomplished in games already played.</p></div>
+        <div class="definition"><span class="definition-id">04 / SOS</span><h3>Strength of Schedule</h3><p>Your schedule-strength measure covering the full regular-season schedule, including remaining opponents.</p></div>
+      </div>
+      <p class="definition-footnote">Game performance metrics are sourced from <a href="https://gameonpaper.com/" rel="noopener noreferrer" target="_blank">GameOnPaper</a>. Custom scores and ratings come from your Excel model. “O” denotes offense, “D” denotes defense. Lower defensive EPA and success-rate figures generally reflect better defense; higher defensive havoc indicates more disruptive plays. Customize these explanations to match your final published methodology.</p>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="footer-inner"><span>CFB <strong>RATINGS</strong> <span class="footer-sep">/</span> INDEPENDENT COLLEGE FOOTBALL ANALYTICS</span><span id="footer-data">2026 SEASON · WEEK 8</span></div></footer>
+</body>
+</html>
